@@ -1,0 +1,30 @@
+html {
+	font-size: 62.5%;
+}
+
+body {
+	font-size: 1.2rem;
+	margin: 0;
+	padding: 0;
+	background-color: #fdfdfd;
+}
+
+h1, h2, h3 {
+	font-family: Calibri, Candara, Segoe, 'Segoe UI', Optima, Arial, sans-serif;
+}
+
+h1 {
+	font-size: 2.0rem;
+}
+
+h2 {
+	font-size: 1.6rem;
+}
+
+h3 {
+	font-size: 1.4rem;
+}
+
+h4 {
+	font-size: 1.2rem;
+}

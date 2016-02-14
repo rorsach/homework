@@ -1,11 +1,18 @@
 require([
     'js/views/MasterView',
-    'js/collections/PostsCollection'
+    'js/collections/PostsCollection',
+    'js/routers/router',
+    'js/models/appState'
 ], function(
     MasterView,
-    PostsCollection
+    postsCollection,
+    router,
+    appState
 ) {
     'use strict';
 
-    var masterView = new MasterView(PostsCollection);
+    var masterView = new MasterView({
+        collection: postsCollection
+    });
+    
 });

@@ -8,9 +8,8 @@ define([
 ) {
     'use strict';
 
-    var Post = Backbone.Model.extend({
-
-    });
-
-    return Post;
+    initialize: function() {
+        this.set('itemsPerPage', 10);
+        this.set('currentPage', 1);
+    }
 });
