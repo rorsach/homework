@@ -5,14 +5,15 @@
 		<p class="post-creationDate"><time datetime="<%= date %>"><%= new Date(date).toLocaleDateString()  %></time></p>
 		<p class="post-author"><%= author.first_name %> <%= author.last_name %></p>
 		<% if (!_.isNull(post_thumbnail)) { %>
-			<img src="<%=  featured_image %>" />
+			<img src="<%= featured_image %>" />
 		<% } %>
+
+        <% if (full) { %>
+            <%= content  %>
+        <% } else { %>
 		<div class="post-excerptContent">
 			<%= excerpt  %>
 		</div>
-
-        <% if (full) { %>
-        full
-        <% } %>
+		<% } %>
 	</article>
 </div>
