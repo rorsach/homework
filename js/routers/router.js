@@ -15,11 +15,17 @@ define([
         routes: {
             "posts/:slug": "posts",
             "page/:index": "page",
-            "*actions": "defaultRoute"
+            "" : "defaultRoute"
+            
         },
 
         initialize: function() {
-            this.listenTo(appState, 'change:currentPage', this.onAppStatePageChange, this);
+
+        },
+
+        defaultRoute: function() {
+            console.log('defaultRoute');
+            Backbone.trigger('router:showpage');
         },
 
         posts: function (slug) {
@@ -29,12 +35,11 @@ define([
 
         page: function (index) {
             console.log("show page:", index);
-            appState.setCurrentPage(index);
+            Backbone.trigger('router:showpage', index);
         },
 
         onAppStatePageChange: function (model, value, options) {
             this.navigate('page/' + value);
-            console.log('onAppStatePageChange', value);
         },
     });
 

@@ -3,11 +3,13 @@ define([
     'jquery',
     'underscore',
     'backbone',
+    'js/routers/router',
     'text!templates/postViewTemplate.html'
 ], function(
     $,
     _,
     Backbone,
+    router,
     postViewTemplate
 ) {
     'use strict';
@@ -21,22 +23,18 @@ define([
         },
         
         initialize: function (options) {
+            this.full = options &&  !!options.full || false;
         },
 
-        render: function (options) {
-            var data;
-            
-            options = options || {};
-            data = $.extend({}, options, this.model.attributes);
-
+        render: function () {
+            var data = $.extend({}, {full: this.full}, this.model.attributes);
             this.$el.html(this.template(data));
 
             return this;
         },
 
         onPostExcerptClick: function (event) {
-            console.log('post excerpt click');
-            window.location.hash = 'slug/' + this.model.get('slug');
+            router.navigate('posts/' + this.model.get('slug'), {trigger: true});
         },
         
     });

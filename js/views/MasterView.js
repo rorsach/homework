@@ -32,16 +32,13 @@ define([
         
         initialize: function(options) {
             this.appState = appState;
-            this.collection.on('sync', this.onSync, this);
             this.appState.on('change:currentPage', this.render, this);
-            this.listenTo(Backbone, 'router:showslug', this.render, this);
-            // this.collection.on('all', this.onAll, this);
+            this.appState.on('change:slug', this.onAppStateChangeSlug, this);
+
+            this.collection.on('sync', this.onSync, this);
             this.collection.fetch();
         },
 
-        onAppStateAll: function(event) {
-            console.log('MasterView:appState:all', arguments);
-        },
         
         getPageRange: function (index) {
             index = (index < this.minIndex) ? this.minIndex : index;
@@ -63,10 +60,14 @@ define([
 
         renderArticle: function (slug) {
             var postView;
+            var data;
+            var model;
+            
+            model = this.collection.findWhere({slug: slug});
+            
+            postView = new PostView({model: model, full: true});
+
             this.$el.empty();
-
-            postView = new PostView({full: true});
-
             this.$el.append(postView.render().$el);
         },
 
@@ -87,7 +88,7 @@ define([
                     // Insert posts across a given range across all columns evenly.
                     // Even distribution ensures most recent posts are at the top, by rows.
                     postView = new PostView({model: model});
-                    // console.log('index:', index, 'title:', model.get('title'), model.get('ID'));
+
                     $columnEl.eq(column).append(postView.render().$el);
                     column = ($columnEl.length - 1 > column) ? column + 1 : 0;
                 }
@@ -100,16 +101,16 @@ define([
             this.render();
         },
         
-        onAll: function () {
-            console.log('this.collection', this.collection);
-        },
-
         onPrevButtonClick: function (event) {
             appState.prevPage();
         },
 
         onNextButtonClick: function (event) {
             appState.nextPage();
+        },
+  
+        onAppStateChangeSlug: function(model, slug) {
+            this.renderArticle(slug);
         },
         
     });

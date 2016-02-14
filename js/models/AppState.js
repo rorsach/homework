@@ -3,10 +3,12 @@ define([
     'underscore',
     'backbone',
     'js/collections/postsCollection',
+    'js/routers/router'
 ], function(
     _,
     Backbone,
-    postsCollection
+    postsCollection,
+    router
 ) {
     'use strict';
     
@@ -21,6 +23,8 @@ define([
         
         initialize: function() {
             this.listenTo(postsCollection, 'sync', this.onPostsCollectionSync, this);
+            this.listenTo(Backbone, 'router:showpage', this.onRouterShowPage, this);
+            this.listenTo(Backbone, 'router:showslug', this.onRouterShowSlug, this);
         },
 
         prevPage: function() {
@@ -37,10 +41,13 @@ define([
 
         setCurrentPage: function (index) {
             // Clamp input values
+            index = index || 0; // in default route scenario, index is not defined.
             index = (index < this.get('minIndex')) ? 0 : index;
             index = (index > this.get('maxIndex')) ? this.get('maxIndex') : index;
-            
+
+            router.navigate('page/' + index, {trigger: true});
             this.set('currentPage', index);            
+            this.trigger('change:currentPage', this, index);
         },
                 
         getArticleRange: function () {
@@ -54,7 +61,17 @@ define([
         
         onPostsCollectionSync: function(event) {
             this.set('maxIndex', Math.floor((postsCollection.length -1) / this.get('itemsPerPage')));
-        }
+        },
+
+        onRouterShowSlug: function (slug) {
+            this.set('slug', slug);
+            this.trigger('change:slug', this, slug);
+        },
+        
+        onRouterShowPage: function (index) {
+            this.setCurrentPage(index);
+        },
+        
     });
 
     return new AppState();
