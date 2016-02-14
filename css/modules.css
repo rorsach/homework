@@ -39,3 +39,13 @@
 	content: '\A';
 	white-space: pre;
 }
+
+
+
+.ajax-loader {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	margin-top: -8px;
+	margin-left: -8px;
+}

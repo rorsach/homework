@@ -1,6 +1,6 @@
 require([
     'js/views/MasterView',
-    'js/collections/PostsCollection',
+    'js/collections/postsCollection',
     'js/routers/router',
     'js/models/appState'
 ], function(

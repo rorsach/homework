@@ -4,7 +4,7 @@ require.config({
             return true;
         }
     },
-    baseUrl: '/',
+    baseUrl: './',
     paths: {
         jquery: 'js/lib/jquery-1.12.0',
         underscore: 'js/lib/underscore',

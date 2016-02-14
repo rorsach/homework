@@ -14,10 +14,10 @@ define([
 
         model: Post,
 
+        // TODO: move hard coded url to service constants model / config
         url: 'https://public-api.wordpress.com/rest/v1/sites/idcdistro.wordpress.com/posts/',
         
         initialize: function () {
-            console.log('PostsCollection:initialize');
         },
         
         sync: function(method, collection, options) {
