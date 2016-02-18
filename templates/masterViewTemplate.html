@@ -1,11 +1,13 @@
-<div class="wrapper">
 
-    <div class="section group">
+<div class="wrapper">
+    
+    <nav class="section group">
         <div class="col span_4_of_4 textAlignCenter">
             <button class="prevPage">Previous Page</button>
+            <span><%= currentPage %> of <%= maxIndex %></span>
             <button class="nextPage">Next Page</button>
         </div>
-    </div>
+    </nav>
     
     <section class="section posts-section group">
 	    <div class="col span_1_of_4">
@@ -18,11 +20,12 @@
 	    </div>
     </section>
 
-    <div class="section group">
+    <nav class="section group">
         <div class="col span_4_of_4 textAlignCenter">
             <button class="prevPage">Previous Page</button>
+            <span><%= currentPage %> of <%= maxIndex %></span>
             <button class="nextPage">Next Page</button>
         </div>
-    </div>
+    </nav>
 
 </div>

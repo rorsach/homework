@@ -4,7 +4,6 @@
 	padding: 1.0rem;
 	min-height: 400px;
 	margin-bottom: 1.0rem;
-
 }
 
 .post-excerpt img {
@@ -40,7 +39,9 @@
 	white-space: pre;
 }
 
-
+.post-backbutton {
+	margin: 1.0rem;
+}
 
 .ajax-loader {
 	position: fixed;

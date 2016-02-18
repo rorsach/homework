@@ -1,4 +1,9 @@
+<% if (full) { %>
+<button class="post-backbutton">Back</button>
+<% }  %>
+
 <div class="post-vignette">
+
 	<article class="post-excerpt">
 
 		<h2 class="post-title"><%= title %></h2>
@@ -17,3 +22,6 @@
 		<% } %>
 	</article>
 </div>
+<% if (full) { %>
+<button class="post-backbutton">Back</button>
+<% }  %>

@@ -25,6 +25,8 @@ define([
         
         el: '#main-content',
 
+        template: _.template(masterViewTemplate),
+
         events: {
             'click .prevPage': 'onPrevButtonClick',
             'click .nextPage': 'onNextButtonClick'
@@ -78,8 +80,13 @@ define([
             var $columnEl;
             var postView;
 
+            var html = this.template({
+                currentPage: appState.get('currentPage') + 1,
+                maxIndex: appState.get('maxIndex') + 1
+            });
+            
             this.$el.empty();
-            this.$el.append(masterViewTemplate);
+            this.$el.append(html) ;
             $columnEl = self.$el.find('.posts-section > .span_1_of_4');
             
             this.collection.forEach(function (model, index) {

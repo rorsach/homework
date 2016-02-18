@@ -19,7 +19,8 @@ define([
         template: _.template(postViewTemplate),
 
         events: {
-            'click': 'onPostExcerptClick'
+            'click .post-excerpt': 'onPostExcerptClick',
+            'click .post-backbutton': 'onBackButtonClick'
         },
         
         initialize: function (options) {
@@ -36,7 +37,10 @@ define([
         onPostExcerptClick: function (event) {
             router.navigate('posts/' + this.model.get('slug'), {trigger: true});
         },
-        
+
+        onBackButtonClick: function (event) {
+            window.history.go(-1);
+        },
     });
 
     return PostView;

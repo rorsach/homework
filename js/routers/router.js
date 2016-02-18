@@ -24,7 +24,6 @@ define([
         },
 
         defaultRoute: function() {
-            console.log('defaultRoute');
             Backbone.trigger('router:showpage');
         },
 

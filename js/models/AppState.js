@@ -42,6 +42,7 @@ define([
         setCurrentPage: function (index) {
             // Clamp input values
             index = index || 0; // in default route scenario, index is not defined.
+            index = parseInt(index, 10);
             index = (index < this.get('minIndex')) ? 0 : index;
             index = (index > this.get('maxIndex')) ? this.get('maxIndex') : index;
 
