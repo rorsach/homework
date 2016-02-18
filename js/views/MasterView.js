@@ -1,3 +1,4 @@
+
 /*global define*/
 define([
     'jquery',
@@ -5,14 +6,16 @@ define([
     'backbone',
     'js/models/appState',
     'js/views/PostView',
-    'text!templates/masterViewTemplate.html'
+    'text!templates/masterViewTemplate.html',
+    'text!templates/rowTemplate.html'
 ], function(
     $,
     _,
     Backbone,
     appState,
     PostView,
-    masterViewTemplate
+    masterViewTemplate,
+    rowTemplate
 ) {
     'use strict';
 
@@ -85,9 +88,12 @@ define([
                 maxIndex: appState.get('maxIndex') + 1
             });
             
+            
             this.$el.empty();
             this.$el.append(html) ;
-            $columnEl = self.$el.find('.posts-section > .span_1_of_4');
+
+            var $row = this.appendRow();
+            $columnEl = this.getColumns($row);
             
             this.collection.forEach(function (model, index) {
                 
@@ -97,10 +103,28 @@ define([
                     postView = new PostView({model: model});
 
                     $columnEl.eq(column).append(postView.render().$el);
-                    column = ($columnEl.length - 1 > column) ? column + 1 : 0;
+                    
+                    if ($columnEl.length - 1 > column) {                        
+                        column++;
+                    } else {
+                        $row = this.appendRow();
+                        $columnEl = this.getColumns($row);
+                        column = 0;
+                    }
                 }
                 
             }, this);       
+        },
+
+        appendRow: function() {
+            var rowHtml = _.template(rowTemplate, {});
+            var $row = $(rowHtml());
+            this.$el.find('.posts-section').append($row);
+            return $row;
+        },
+
+        getColumns: function($row) {
+            return $row.find('.span_1_of_4');
         },
 
         onSync: function (event) {

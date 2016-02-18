@@ -5,3 +5,18 @@
 .textAlignCenter {
 	text-align: center;
 }
+
+.displayFlex {
+	display: flex;
+}
+
+.fillHeight {
+	display: flex;
+	flex-direction: column;
+	flex: 1;
+}
+
+.flex {
+	flex: 1;
+	flex-direction: column;
+}

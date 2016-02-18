@@ -25,6 +25,7 @@ define([
         
         initialize: function (options) {
             this.full = options &&  !!options.full || false;
+            this.$el.addClass('fillHeight');
         },
 
         render: function () {
