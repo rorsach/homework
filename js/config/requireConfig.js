@@ -4,6 +4,7 @@ require.config({
             return true;
         }
     },
+    urlArgs: 'cb' + new Date().getTime(),
     baseUrl: './',
     paths: {
         jquery: 'js/lib/jquery-1.12.0',

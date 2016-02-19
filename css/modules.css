@@ -1,13 +1,16 @@
-.post-excerpt {
+.post {
 	overflow: hidden;
 	box-shadow: 0px 2px 3px #bbb;
 	padding: 1.0rem;
 	min-height: 400px;
-	/* margin-bottom: 1.0rem; */
-	flex: 1;
 }
 
-.post-excerpt img {
+.post-fullContainer {
+	margin: 0 auto;
+	max-width: 980px;
+}
+
+.post img {
 	max-width: 100%;
 	height: auto;
 }
@@ -17,7 +20,7 @@
 	box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
 }
 
-.post-excerptContent a {
+.post-content a {
 	/* These are technically the same, but use both */
 	overflow-wrap: break-word;
 	word-wrap: break-word;
@@ -35,13 +38,16 @@
 	hyphens: auto;
 }
 
-.post-excerptContent a:after {
+.post-content a:after {
 	content: '\A';
 	white-space: pre;
 }
 
 .post-backbutton {
 	margin: 1.0rem;
+	display: block;
+	flex: initial;
+	/* position: relative; */
 }
 
 .ajax-loader {
@@ -50,4 +56,10 @@
 	left: 50%;
 	margin-top: -8px;
 	margin-left: -8px;
+}
+
+@media only screen and (max-width: 768px) {
+	.post {
+		min-height: initial;
+	}
 }

@@ -55,7 +55,7 @@ define([
                 end: end
             };
         },
-
+     
         render: function () {
 
             this.renderList();
@@ -116,6 +116,10 @@ define([
             }, this);       
         },
 
+        scrollToTop: function() {
+            $('html, body').animate({ scrollTop: 0 }, 'fast');
+        },
+        
         appendRow: function() {
             var rowHtml = _.template(rowTemplate, {});
             var $row = $(rowHtml());

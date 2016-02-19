@@ -1,27 +1,19 @@
-<% if (full) { %>
-<button class="post-backbutton">Back</button>
-<% }  %>
+<div class="post-vignette">
 
-<div class="post-vignette fillHeight">
-
-	<article class="post-excerpt flex">
+	<article class="post flex">
 
 		<h2 class="post-title"><%= title %></h2>
 		<p class="post-creationDate"><time datetime="<%= date %>"><%= new Date(date).toLocaleDateString()  %></time></p>
 		<p class="post-author"><%= author.first_name %> <%= author.last_name %></p>
-		<% if (!_.isNull(post_thumbnail)) { %>
-			<img src="<%= featured_image %>" />
+
+		<% if (!_.isNull(featured_image)) { %>
+			<!-- <img src="<%= featured_image %>" /> -->
 		<% } %>
 
-        <% if (full) { %>
-            <%= content  %>
-        <% } else { %>
-		<div class="post-excerptContent">
+		<div class="post-content">
 			<%= excerpt  %>
 		</div>
-		<% } %>
+
 	</article>
+
 </div>
-<% if (full) { %>
-<button class="post-backbutton">Back</button>
-<% }  %>
